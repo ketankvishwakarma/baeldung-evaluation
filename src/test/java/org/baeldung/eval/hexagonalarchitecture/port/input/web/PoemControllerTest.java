@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.baeldung.eval.hexagonalarchitecture.adapter.web.PoemControllerImpl;
 import org.baeldung.eval.hexagonalarchitecture.core.PoemService;
 import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
-import org.baeldung.eval.hexagonalarchitecture.port.input.web.PoemController;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(PoemControllerImpl.class)

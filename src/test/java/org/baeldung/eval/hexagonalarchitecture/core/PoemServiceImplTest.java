@@ -6,7 +6,6 @@ import static org.mockito.Mockito.verify;
 import java.util.List;
 import java.util.UUID;
 
-import org.baeldung.eval.hexagonalarchitecture.core.PoemServiceImpl;
 import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
 import org.baeldung.eval.hexagonalarchitecture.port.output.persistence.PoemPersistencePort;
 import org.junit.jupiter.api.Test;
