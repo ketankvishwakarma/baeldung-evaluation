@@ -26,3 +26,7 @@ target/*
 .vscode/*
 mvnw*
 .mvn/*
+.project
+.classpath
+.settings/*
+.factorypath

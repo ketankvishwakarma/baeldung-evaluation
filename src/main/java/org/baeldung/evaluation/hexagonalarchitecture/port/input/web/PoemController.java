@@ -25,7 +25,7 @@ public interface PoemController {
     ResponseEntity<String> updatePoems(@RequestBody PoemDTO pomeDTO);
 
     @GetMapping("/poems/{pomeId}")
-    ResponseEntity<PoemDTO> getPoemsById(@PathVariable UUID poemId);
+    ResponseEntity<PoemDTO> getPoemsById(@PathVariable(name = "pomeId") UUID poemId);
 
     @GetMapping("/poems")
     ResponseEntity<List<PoemDTO>> poems();

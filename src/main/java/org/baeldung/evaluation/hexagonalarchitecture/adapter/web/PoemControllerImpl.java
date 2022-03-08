@@ -43,7 +43,6 @@ public class PoemControllerImpl implements PoemController{
     @Override
     public ResponseEntity<PoemDTO> getPoemsById(UUID poemId) {
         try{
-
             return new ResponseEntity<>((poemService.getPoemById(poemId)),HttpStatus.OK);
         }catch(PoemNotFoundException ex){
             log.error("ERROR | {}", ex);
