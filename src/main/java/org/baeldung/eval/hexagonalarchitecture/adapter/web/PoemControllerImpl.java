@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.baeldung.eval.hexagonalarchitecture.core.PoemService;
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 import org.baeldung.eval.hexagonalarchitecture.excpetion.PoemNotFoundException;
 import org.baeldung.eval.hexagonalarchitecture.port.input.web.PoemController;
 import org.springframework.http.HttpStatus;
@@ -24,25 +24,25 @@ public class PoemControllerImpl implements PoemController{
     }
     
     @Override
-    public ResponseEntity<Void> addPoems(PoemDTO poemDTO) {
+    public ResponseEntity<Void> addPoems(Poem poemDTO) {
         poemService.addPoems(poemDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<String> removePoems(PoemDTO poemDTO) {
+    public ResponseEntity<String> removePoems(Poem poemDTO) {
         poemService.removePoems(poemDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<String> updatePoems(PoemDTO poemDTO) {
+    public ResponseEntity<String> updatePoems(Poem poemDTO) {
         poemService.updatePoems(poemDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<PoemDTO> getPoemsById(UUID poemId) {
+    public ResponseEntity<Poem> getPoemsById(UUID poemId) {
         try{
             return new ResponseEntity<>((poemService.getPoemById(poemId)),HttpStatus.OK);
         }catch(PoemNotFoundException ex){
@@ -52,7 +52,7 @@ public class PoemControllerImpl implements PoemController{
     }
 
     @Override
-    public ResponseEntity<List<PoemDTO>> poems() {
+    public ResponseEntity<List<Poem>> poems() {
         return new ResponseEntity<>((poemService.getAllPoems()),HttpStatus.OK);
     }   
 }

@@ -3,7 +3,7 @@ package org.baeldung.eval.hexagonalarchitecture.port.input.web;
 import java.util.List;
 import java.util.UUID;
 
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +16,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface PoemController {
     
     @PostMapping("/poems")
-    ResponseEntity<Void> addPoems(@RequestBody PoemDTO pomeDTO);
+    ResponseEntity<Void> addPoems(@RequestBody Poem pomeDTO);
 
     @DeleteMapping("/poems")
-    ResponseEntity<String> removePoems(@RequestBody PoemDTO pomeDTO);
+    ResponseEntity<String> removePoems(@RequestBody Poem pomeDTO);
 
     @PutMapping("/poems")
-    ResponseEntity<String> updatePoems(@RequestBody PoemDTO pomeDTO);
+    ResponseEntity<String> updatePoems(@RequestBody Poem pomeDTO);
 
     @GetMapping("/poems/{pomeId}")
-    ResponseEntity<PoemDTO> getPoemsById(@PathVariable(name = "pomeId") UUID poemId);
+    ResponseEntity<Poem> getPoemsById(@PathVariable(name = "pomeId") UUID poemId);
 
     @GetMapping("/poems")
-    ResponseEntity<List<PoemDTO>> poems();
+    ResponseEntity<List<Poem>> poems();
 
 }

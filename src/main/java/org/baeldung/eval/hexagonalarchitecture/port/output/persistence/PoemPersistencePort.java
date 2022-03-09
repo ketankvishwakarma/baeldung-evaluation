@@ -3,16 +3,16 @@ package org.baeldung.eval.hexagonalarchitecture.port.output.persistence;
 import java.util.List;
 import java.util.UUID;
 
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 
 public interface PoemPersistencePort {
-    public void addPoem(PoemDTO poemDTO);
+    public void addPoem(Poem poemDTO);
 
-    public void removePoem(PoemDTO poemDTO);
+    public void removePoem(Poem poemDTO);
 
-    public void updatePoem(PoemDTO poemDTO);
+    public void updatePoem(Poem poemDTO);
 
-    public List<PoemDTO> getAllPoems();
+    public List<Poem> getAllPoems();
 
-    public PoemDTO getPoemById(UUID poemId);
+    public Poem getPoemById(UUID poemId);
 }

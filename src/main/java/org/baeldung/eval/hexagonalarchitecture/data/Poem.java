@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @Data @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PoemDTO {
+public class Poem {
     
-    private String title;
+	private String title;
+    
     private String author;
 }

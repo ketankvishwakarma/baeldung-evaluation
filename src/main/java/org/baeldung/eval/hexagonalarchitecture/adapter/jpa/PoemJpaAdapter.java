@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 
 import org.baeldung.eval.hexagonalarchitecture.adapter.jpa.entity.PoemEntity;
 import org.baeldung.eval.hexagonalarchitecture.adapter.jpa.repository.PoemJPARepository;
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 import org.baeldung.eval.hexagonalarchitecture.excpetion.PoemNotFoundException;
 import org.baeldung.eval.hexagonalarchitecture.port.output.persistence.PoemPersistencePort;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class PoemJpaAdapter implements PoemPersistencePort{
         this.poemJPARepository = jpaRepository;
     }
     @Override
-    public void addPoem(PoemDTO poemDTO) {
+    public void addPoem(Poem poemDTO) {
         PoemEntity poem = poemJPARepository.findByTitle(poemDTO.getTitle());
         if(poem==null){
             final PoemEntity poemEntity = getPoemEntity(poemDTO);
@@ -32,13 +32,13 @@ public class PoemJpaAdapter implements PoemPersistencePort{
     }
 
     @Override
-    public void removePoem(PoemDTO poemDTO) {
+    public void removePoem(Poem poemDTO) {
         poemJPARepository.deleteAllByTitle(poemDTO.getTitle());
         
     }
 
     @Override
-    public void updatePoem(PoemDTO poemDTO) {
+    public void updatePoem(Poem poemDTO) {
         PoemEntity poem = poemJPARepository.findByTitle(poemDTO.getTitle());
         if(Objects.isNull(poem)){
             addPoem(poemDTO);
@@ -50,26 +50,26 @@ public class PoemJpaAdapter implements PoemPersistencePort{
     }
 
     @Override
-    public List<PoemDTO> getAllPoems() {
+    public List<Poem> getAllPoems() {
        return poemJPARepository.findAll().stream().map(this::getPoemDTO).toList();
     }
 
     @SneakyThrows
     @Override
-    public PoemDTO getPoemById(UUID poemId) {
+    public Poem getPoemById(UUID poemId) {
         return getPoemDTO(poemJPARepository.findById(poemId).orElseThrow((Supplier<Throwable>) () -> new PoemNotFoundException(poemId)));
     }
     
 
-    private PoemEntity getPoemEntity(PoemDTO poemDTO) {
+    private PoemEntity getPoemEntity(Poem poemDTO) {
         return PoemEntity.builder()
                 .author(poemDTO.getAuthor())
                 .title(poemDTO.getTitle())
                 .build();
     }
 
-    private PoemDTO getPoemDTO(PoemEntity poemEntity) {
-        return PoemDTO.builder()
+    private Poem getPoemDTO(PoemEntity poemEntity) {
+        return Poem.builder()
                 .author(poemEntity.getAuthor())
                 .title(poemEntity.getTitle())
                 .build();

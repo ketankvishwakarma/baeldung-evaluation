@@ -3,16 +3,16 @@ package org.baeldung.eval.hexagonalarchitecture.core;
 import java.util.List;
 import java.util.UUID;
 
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 
 public interface PoemService {
-    public void addPoems(PoemDTO poemDTO);
+    public void addPoems(Poem poemDTO);
 
-    public void removePoems(PoemDTO poemDTO);
+    public void removePoems(Poem poemDTO);
 
-    public void updatePoems(PoemDTO poemDTO);
+    public void updatePoems(Poem poemDTO);
 
-    public List<PoemDTO> getAllPoems();
+    public List<Poem> getAllPoems();
 
-    public PoemDTO getPoemById(UUID poemId);
+    public Poem getPoemById(UUID poemId);
 }

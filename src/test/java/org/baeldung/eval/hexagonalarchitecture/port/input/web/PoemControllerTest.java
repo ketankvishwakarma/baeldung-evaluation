@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.baeldung.eval.hexagonalarchitecture.adapter.web.PoemControllerImpl;
 import org.baeldung.eval.hexagonalarchitecture.core.PoemService;
-import org.baeldung.eval.hexagonalarchitecture.data.PoemDTO;
+import org.baeldung.eval.hexagonalarchitecture.data.Poem;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class PoemControllerTest {
 
 	@Test
 	void testAddPoems_whenAddPoem_thenEntityIsPortedToService() throws Exception {
-		PoemDTO testPoem = PoemDTO.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
+		Poem testPoem = Poem.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
 		mvc.perform(MockMvcRequestBuilders
 			.post("/poems").content(objectMapper.writeValueAsString(testPoem))
 			.contentType(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ public class PoemControllerTest {
 
 	@Test
 	void testGetPoemsById_success() throws Exception {
-		final PoemDTO testPoem = PoemDTO.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
+		final Poem testPoem = Poem.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
 		UUID testId = UUID.randomUUID();
 		when(poemServiceMock.getPoemById(testId)).thenReturn(testPoem);
 		mvc.perform(MockMvcRequestBuilders
@@ -79,8 +79,8 @@ public class PoemControllerTest {
 	
 	@Test 
 	void testPoems() throws Exception {
-		final PoemDTO testPoem = PoemDTO.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
-		List<PoemDTO> poems =new ArrayList<>();
+		final Poem testPoem = Poem.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
+		List<Poem> poems =new ArrayList<>();
 		poems.add(testPoem);
 		when(poemServiceMock.getAllPoems()).thenReturn(poems);
 		mvc.perform(MockMvcRequestBuilders
@@ -94,7 +94,7 @@ public class PoemControllerTest {
 	
 	@Test 
 	void testRemovePoems() throws Exception {
-		final PoemDTO testPoem = PoemDTO.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
+		final Poem testPoem = Poem.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
 		mvc.perform(MockMvcRequestBuilders
 			.delete("/poems")
 			.content(objectMapper.writeValueAsString(testPoem))
@@ -106,7 +106,7 @@ public class PoemControllerTest {
 	
 	@Test 
 	void testUpdatePoems( )throws Exception {
-		final PoemDTO testPoem = PoemDTO.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
+		final Poem testPoem = Poem.builder().author(TEST_AUTHOR).title(TEST_POEM_TITLE).build();
 		mvc.perform(MockMvcRequestBuilders
 			.put("/poems")
 			.content(objectMapper.writeValueAsString(testPoem))
