@@ -24,8 +24,6 @@ hs_err_pid*
 
 target/*
 .vscode/*
-mvnw*
-.mvn/*
 .project
 .classpath
 .settings/*
